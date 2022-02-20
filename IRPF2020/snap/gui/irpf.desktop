@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Office;
+Comment=Programa IRPF 2020 - Receita Federal
+Exec=irpf2020 %U
+GenericName=IRPF 2020
+Icon=${SNAP}/meta/gui/irpf.png
+Keywords=irpf;receita federal;imposto de renda;
+Name=IRPF 2020
+StartupNotify=true
+StartupWMClass=serpro-ppgd-app-IRPFPGD
+Terminal=false
+Type=Application
+Version=1.0
