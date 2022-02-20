@@ -7,10 +7,9 @@ description: |
 
 architectures:
   - build-on: amd64
-
+    run-on: amd64
 assumes:
 - command-chain
-
 grade: stable
 confinement: strict
 
@@ -23,16 +22,19 @@ parts:
   app-package:
     plugin: dump
     source: IRPF2021-1.9.zip
+    source-checksum: "sha1/84d7a5ae312b3325a9aa22a9fa260e2d5da9484c"
     organize:
       IRPF2021: irpf/
 
   java-package:
     plugin: dump
     source: jdk-11.0.13_linux-x64_bin.tar.gz
+    source-checksum: "sha1/84bdeebee4ea1a635b0cb73bfbdfaa1031548aea"
     organize:
       '*': java-jdk/
 
 apps:
+
   irpf2021:
     command: run-app.sh
       - snap/command-chain/snapcraft-runner
@@ -51,6 +53,7 @@ apps:
       - x11
 
 hooks:
+
   configure:
     command-chain:
     - snap/command-chain/hooks-configure-desktop
