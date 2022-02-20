@@ -1,0 +1,51 @@
+name: irpf2021
+base: core20
+version: '1.9'
+summary: Programa IRPF 2021
+description: |
+  Programa IRPF 2021.
+
+grade: stable
+confinement: strict
+
+parts:
+
+  app-launcher:
+    plugin: dump
+    source: launcher
+
+  app-package:
+    plugin: dump
+    source: IRPF2021-1.9.zip
+    organize:
+      IRPF2021: irpf/
+    stage-packages:
+      - libfreetype6
+      - libpng16-16
+      - libx11-6
+      - libxext6
+      - libxi6
+      - libxrender1
+      - libxtst6
+      - libasound2
+      - fontconfig
+
+  java-package:
+    plugin: dump
+    source: jdk-11.0.13_linux-x64_bin.tar.gz
+    organize:
+      '*': java-jdk/
+
+apps:
+  irpf2021:
+    command: run-app.sh
+    plugs:
+      - cups-control
+      - desktop
+      - desktop-legacy
+      - home
+      - network
+      - removable-media
+      - unity7
+      - wayland
+      - x11

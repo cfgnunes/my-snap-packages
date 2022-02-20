@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Application
+Exec=irpf2021
+Icon=${SNAP}/meta/gui/irpf.png
+Name=IRPF 2021
+Comment=Programa IRPF 2021 - Receita Federal
+Terminal=false
+StartupWMClass=serpro-ppgd-app-IRPFPGD
+Type=Application
+Version=1.0
