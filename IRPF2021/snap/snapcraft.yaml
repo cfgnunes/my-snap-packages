@@ -5,6 +5,12 @@ summary: Programa IRPF 2021
 description: |
   Programa IRPF 2021.
 
+architectures:
+  - build-on: amd64
+
+assumes:
+- command-chain
+
 grade: stable
 confinement: strict
 
@@ -19,16 +25,6 @@ parts:
     source: IRPF2021-1.9.zip
     organize:
       IRPF2021: irpf/
-    stage-packages:
-      - libfreetype6
-      - libpng16-16
-      - libx11-6
-      - libxext6
-      - libxi6
-      - libxrender1
-      - libxtst6
-      - libasound2
-      - fontconfig
 
   java-package:
     plugin: dump
@@ -39,13 +35,24 @@ parts:
 apps:
   irpf2021:
     command: run-app.sh
+      - snap/command-chain/snapcraft-runner
+      - snap/command-chain/desktop-launch
+    extensions: [ gnome-3-38 ]
     plugs:
       - cups-control
       - desktop
       - desktop-legacy
       - home
       - network
+      - opengl
       - removable-media
       - unity7
       - wayland
       - x11
+
+hooks:
+  configure:
+    command-chain:
+    - snap/command-chain/hooks-configure-desktop
+    plugs:
+    - desktop
