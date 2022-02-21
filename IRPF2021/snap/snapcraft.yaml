@@ -9,7 +9,7 @@ architectures:
   - build-on: amd64
     run-on: amd64
 assumes:
-- command-chain
+  - command-chain
 grade: stable
 confinement: strict
 
