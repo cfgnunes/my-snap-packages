@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Office;
+Comment=Programa GCAP 2021 - Receita Federal
+Exec=gcap2021 %U
+GenericName=GCAP 2021
+Icon=${SNAP}/meta/gui/gcap.png
+Keywords=gcap;receita federal;programa de apuração dos ganhos de capital;
+Name=GCAP 2021
+StartupNotify=true
+StartupWMClass=br-gov-serpro-gcap-app-PGDGCAP
+Terminal=false
+Type=Application
+Version=1.0
