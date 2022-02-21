@@ -46,7 +46,6 @@ apps:
       - desktop-legacy
       - home
       - network
-      - opengl
       - removable-media
       - unity7
       - wayland
