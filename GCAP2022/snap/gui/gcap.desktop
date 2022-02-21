@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Office;
+Comment=Programa GCAP 2022 - Receita Federal
+Exec=gcap2022 %U
+GenericName=GCAP 2022
+Icon=${SNAP}/meta/gui/gcap.png
+Keywords=gcap;receita federal;programa de apuração dos ganhos de capital;
+Name=GCAP 2022
+StartupNotify=true
+StartupWMClass=br-gov-serpro-gcap-app-PGDGCAP
+Terminal=false
+Type=Application
+Version=1.0
