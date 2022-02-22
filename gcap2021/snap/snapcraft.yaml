@@ -25,7 +25,7 @@ parts:
       '*': jdk11/
 
 apps:
-  irpf2020:
+  gcap2021:
     command: jdk11/bin/java -Xmx256m -jar $SNAP/gcap/GCAP.jar
     environment:
       JAVA_HOME: $SNAP/jdk11/
