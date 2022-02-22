@@ -1,0 +1,37 @@
+name: bootiso
+base: core20
+version: '4.2.0'
+summary: A bash program to securely create a bootable USB device from one image file.
+description: |
+  A bash program to securely create a bootable USB device from one image file.
+grade: stable
+confinement: strict
+
+parts:
+  bootiso:
+    plugin: nil
+    source: https://github.com/jsamr/bootiso.git
+    source-type: git
+    source-tag: v4.2.0
+    stage-packages:
+      - bc
+      - binutils
+      - bsdmainutils
+      - curl
+      - eject
+      - extlinux
+      - file
+      - jq
+      - rsync
+      - syslinux
+      - util-linux
+      - wimtools
+    override-build: |
+      cp bootiso ../install
+      snapcraftctl build
+
+apps:
+  bootiso:
+    command: bootiso
+    plugs:
+      - block-devices
