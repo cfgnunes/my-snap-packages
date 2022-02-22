@@ -1,0 +1,39 @@
+name: wxformbuilder
+base: core20
+version: '3.10.1'
+summary: A wxWidgets GUI Builder
+description: |
+  wxFormBuilder is a GUI builder for the wxWidgets framework.
+  Code generation is supported for C++, Python, XRC, wxLua and PHP.
+  Additionally, the import and export of XRC code is possible.
+  To support additional widgets custom plugins can be used.
+  wxFormBuilder runs on Windows, various Linux distributions and macOS.
+architectures:
+  - build-on: amd64
+    run-on: amd64
+grade: stable
+confinement: strict
+
+parts:
+  wxformbuilder-deb:
+    plugin: dump
+    source: wxformbuilder_3.10.1_ubuntu-20.04_amd64.deb
+    source-type: deb
+    stage-packages:
+      - libwxbase3.0-0v5
+      - libwxgtk-media3.0-gtk3-0v5
+      - libwxgtk3.0-gtk3-0v5
+      - libglu1-mesa
+      - freeglut3
+
+apps:
+  wxformbuilder:
+    command: usr/bin/wxformbuilder
+    extensions: [gnome-3-38]
+    plugs:
+      - desktop
+      - desktop-legacy
+      - home
+      - network
+      - unity7
+      - wayland
