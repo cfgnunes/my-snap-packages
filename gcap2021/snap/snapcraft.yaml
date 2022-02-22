@@ -14,7 +14,7 @@ parts:
   app:
     plugin: dump
     source: GCAP2021v1.3.zip
-    source-checksum: "sha1/765084683a40c11e442cc84e6a25d48e267254d1"
+    source-checksum: 'sha1/765084683a40c11e442cc84e6a25d48e267254d1'
     organize:
       GCAP2021: gcap/
   java:
