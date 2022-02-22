@@ -1,4 +1,5 @@
-*.tar.gz
-*.zip
-*.snap
 .vscode
+*.snap
+*.tar.gz
+*.xdelta*
+*.zip
