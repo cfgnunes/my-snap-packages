@@ -1,7 +1,7 @@
 name: encryptpad
 base: core20
 version: '0.5.0.1-beta'
-summary: EncryptPad
+summary: An application for viewing and editing symmetrically encrypted text.
 description: |
   EncryptPad is an application for viewing and editing symmetrically encrypted text.
   Using a simple and convenient graphical and command line interface, EncryptPad provides a tool for encrypting and decrypting binary files on disk while offering effective measures for protecting information, and it uses the most widely chosen quality file format OpenPGP.
