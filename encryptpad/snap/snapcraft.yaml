@@ -1,0 +1,70 @@
+name: encryptpad
+base: core20
+version: '0.5.0.1-beta'
+summary: EncryptPad
+description: |
+  EncryptPad is an application for viewing and editing symmetrically encrypted text.
+  Using a simple and convenient graphical and command line interface, EncryptPad provides a tool for encrypting and decrypting binary files on disk while offering effective measures for protecting information, and it uses the most widely chosen quality file format OpenPGP.
+  Unlike other OpenPGP software which main purpose is asymmetric encryption, the primary focus of EncryptPad is symmetric encryption.
+architectures:
+  - build-on: amd64
+    run-on: amd64
+grade: stable
+confinement: strict
+
+parts:
+  # ----------------------------------------------------------------------------
+  # Part from: https://github.com/ubuntu/snapcraft-desktop-helpers/blob/master/snapcraft.yaml
+  desktop-qt5:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: qt
+    plugin: make
+    make-parameters: ["FLAVOR=qt5"]
+    build-packages:
+      - build-essential
+      - qtbase5-dev
+      - dpkg-dev
+  # ----------------------------------------------------------------------------
+  encryptpad:
+    plugin: nil
+    source: https://github.com/evpo/EncryptPad.git
+    source-type: git
+    source-tag: v0.5.0.1
+    build-packages:
+      - qtbase5-dev
+      - gcc
+      - g++
+      - make
+      - python
+      - zlib1g-dev
+      - pkg-config
+      - libbotan-2-dev
+      - libbz2-dev
+    stage-packages:
+      - libbotan-2-12
+      - libqt5core5a
+      - libqt5gui5
+      - libqt5widgets5
+    override-build: |
+      ./configure.py
+      make
+      mkdir -p ../install/bin
+      mv ../build/bin/release/encryptpad ../install/bin
+      snapcraftctl build
+    after:
+      - desktop-qt5
+
+apps:
+  encryptpad:
+    command-chain:
+      - bin/desktop-launch # From part 'desktop-qt5'
+    command: bin/encryptpad
+    extensions: [gnome-3-38]
+    plugs:
+      - desktop
+      - desktop-legacy
+      - home
+      - network
+      - unity7
+      - wayland
+      - x11
