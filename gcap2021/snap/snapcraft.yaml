@@ -1,45 +1,36 @@
 name: gcap2021
 base: core20
 version: '1.3'
-summary: Programa GCAP 2021
+summary: Programa GCAP 2022
 description: |
-  Programa GCAP 2021.
-
+  Programa GCAP 2022.
 architectures:
   - build-on: amd64
     run-on: amd64
-assumes:
-  - command-chain
 grade: stable
 confinement: strict
 
 parts:
-
-  app-launcher:
-    plugin: dump
-    source: launcher
-
-  app-package:
+  app:
     plugin: dump
     source: GCAP2021v1.3.zip
     source-checksum: "sha1/765084683a40c11e442cc84e6a25d48e267254d1"
     organize:
       GCAP2021: gcap/
-
-  java-package:
+  java:
     plugin: dump
     source: jdk-11.0.13_linux-x64_bin.tar.gz
-    source-checksum: "sha1/84bdeebee4ea1a635b0cb73bfbdfaa1031548aea"
+    source-checksum: 'sha1/84bdeebee4ea1a635b0cb73bfbdfaa1031548aea'
     organize:
-      '*': java-jdk/
+      '*': jdk11/
 
 apps:
-
-  gcap2021:
-    command: run-app.sh
-      - snap/command-chain/snapcraft-runner
-      - snap/command-chain/desktop-launch
-    extensions: [ gnome-3-38 ]
+  irpf2020:
+    command: jdk11/bin/java -Xmx256m -jar $SNAP/gcap/GCAP.jar
+    environment:
+      JAVA_HOME: $SNAP/jdk11/
+      PATH: $JAVA_HOME/bin:$PATH
+    extensions: [gnome-3-38]
     plugs:
       - cups-control
       - desktop
@@ -50,11 +41,3 @@ apps:
       - unity7
       - wayland
       - x11
-
-hooks:
-
-  configure:
-    command-chain:
-    - snap/command-chain/hooks-configure-desktop
-    plugs:
-    - desktop
