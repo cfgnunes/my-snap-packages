@@ -1,0 +1,45 @@
+name: wxlame
+base: core20
+version: '3.5.1'
+summary: A free front-end for the LAME MP3 encoder.
+description: |
+  A free front-end for the LAME MP3 encoder.
+grade: stable
+confinement: strict
+
+parts:
+  wxlame:
+    plugin: nil
+    source: https://github.com/cfgnunes/wxlame.git
+    source-type: git
+    #source-tag: 3.5.1
+    build-packages:
+      - build-essential
+      - cmake
+      - libwxgtk3.0-gtk3-dev
+    stage-packages:
+      - libwxgtk3.0-gtk3-0v5
+      - lame
+    override-build: |
+      mkdir build
+      cd build
+      cmake -DCMAKE_INSTALL_PREFIX:PATH=. ..
+      cmake --build .
+      sudo make install
+      mkdir -p ../../install/app
+      pwd
+      mv share/wxlame/resource ../../install/app/
+      mv bin/wxlame ../../install/app/
+
+apps:
+  wxlame:
+    command: app/wxlame
+    extensions: [gnome-3-38]
+    plugs:
+      - desktop
+      - desktop-legacy
+      - home
+      - network
+      - unity7
+      - wayland
+      - x11
