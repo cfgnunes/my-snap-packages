@@ -1,9 +1,9 @@
-name: irpf2019
+name: irpf2018
 base: core20
 version: '1.7'
-summary: Programa IRPF 2019
+summary: Programa IRPF 2018
 description: |
-  Programa IRPF 2019.
+  Programa IRPF 2018.
 architectures:
   - build-on: amd64
     run-on: amd64
@@ -13,10 +13,10 @@ confinement: strict
 parts:
   app:
     plugin: dump
-    source: IRPF2019-1.7.zip
-    source-checksum: 'sha1/4b74e8738fc34756fe794cfa9ef0b79a695f030e'
+    source: IRPF2018-1.7.zip
+    source-checksum: 'sha1/27cd419af99f2e32018db34aca2626110904d008'
     organize:
-      IRPF2019: irpf/
+      IRPF2018: irpf/
   java:
     plugin: dump
     source: OpenJDK11U-jre_x64_linux_hotspot_11.0.14.1_1.tar.gz
@@ -25,7 +25,7 @@ parts:
       '*': jdk11/
 
 apps:
-  irpf2019:
+  irpf2018:
     command: jdk11/bin/java -Xmx256m -jar $SNAP/irpf/irpf.jar
     environment:
       JAVA_HOME: $SNAP/jdk11/

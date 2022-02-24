@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Office;
+Comment=Programa IRPF 2018 - Receita Federal
+Exec=irpf2018 %U
+GenericName=IRPF 2018
+Icon=${SNAP}/meta/gui/irpf.png
+Keywords=irpf;receita federal;imposto de renda;
+Name=IRPF 2018
+StartupNotify=true
+StartupWMClass=serpro-ppgd-app-IRPFPGD
+Terminal=false
+Type=Application
+Version=1.0
