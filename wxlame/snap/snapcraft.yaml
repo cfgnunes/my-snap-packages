@@ -27,7 +27,6 @@ parts:
       cmake --build .
       sudo make install
       mkdir -p ../../install/app
-      pwd
       mv share/wxlame/resource ../../install/app/
       mv bin/wxlame ../../install/app/
 
