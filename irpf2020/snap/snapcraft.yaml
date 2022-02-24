@@ -19,8 +19,8 @@ parts:
       IRPF2020: irpf/
   java:
     plugin: dump
-    source: jdk-11.0.13_linux-x64_bin.tar.gz
-    source-checksum: 'sha1/84bdeebee4ea1a635b0cb73bfbdfaa1031548aea'
+    source: OpenJDK11U-jre_x64_linux_hotspot_11.0.14.1_1.tar.gz
+    source-checksum: 'sha1/36ea7324761aff38c0ef6d121568304390dda3a7'
     organize:
       '*': jdk11/
 
