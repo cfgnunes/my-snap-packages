@@ -1,9 +1,9 @@
 name: irpf2020
 base: core20
 version: '2.2'
-summary: Programa IRPF 2021
+summary: Programa IRPF 2020
 description: |
-  Programa IRPF 2021.
+  Programa IRPF 2020.
 architectures:
   - build-on: amd64
     run-on: amd64

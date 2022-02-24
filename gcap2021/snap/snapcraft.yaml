@@ -1,9 +1,9 @@
 name: gcap2021
 base: core20
 version: '1.3'
-summary: Programa GCAP 2022
+summary: Programa GCAP 2021
 description: |
-  Programa GCAP 2022.
+  Programa GCAP 2021.
 architectures:
   - build-on: amd64
     run-on: amd64
