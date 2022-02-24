@@ -1,0 +1,43 @@
+name: irpf2019
+base: core20
+version: '2.2'
+summary: Programa IRPF 2019
+description: |
+  Programa IRPF 2019.
+architectures:
+  - build-on: amd64
+    run-on: amd64
+grade: stable
+confinement: strict
+
+parts:
+  app:
+    plugin: dump
+    source: IRPF2019-1.7.zip
+    source-checksum: 'sha1/4b74e8738fc34756fe794cfa9ef0b79a695f030e'
+    organize:
+      IRPF2019: irpf/
+  java:
+    plugin: dump
+    source: OpenJDK11U-jre_x64_linux_hotspot_11.0.14.1_1.tar.gz
+    source-checksum: 'sha1/36ea7324761aff38c0ef6d121568304390dda3a7'
+    organize:
+      '*': jdk11/
+
+apps:
+  irpf2019:
+    command: jdk11/bin/java -Xmx256m -jar $SNAP/irpf/irpf.jar
+    environment:
+      JAVA_HOME: $SNAP/jdk11/
+      PATH: $JAVA_HOME/bin:$PATH
+    extensions: [gnome-3-38]
+    plugs:
+      - cups-control
+      - desktop
+      - desktop-legacy
+      - home
+      - network
+      - removable-media
+      - unity7
+      - wayland
+      - x11
