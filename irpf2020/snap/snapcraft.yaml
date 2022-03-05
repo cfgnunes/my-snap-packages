@@ -10,6 +10,16 @@ architectures:
 grade: stable
 confinement: strict
 
+plugs:
+  app-config-files:
+    interface: personal-files
+    read:
+      - $HOME/.irpf
+      - $HOME/.rfb
+    write:
+      - $HOME/.irpf
+      - $HOME/.rfb
+
 parts:
   app:
     plugin: dump
@@ -41,3 +51,4 @@ apps:
       - unity7
       - wayland
       - x11
+      - app-config-files
