@@ -1,0 +1,43 @@
+name: gcap2020
+base: core20
+version: '1.7'
+summary: Programa GCAP 2020
+description: |
+  Programa GCAP 2020.
+architectures:
+  - build-on: amd64
+    run-on: amd64
+grade: stable
+confinement: strict
+
+parts:
+  app:
+    plugin: dump
+    source: GCAP2020v1.7.zip
+    source-checksum: 'sha1/433368e64c282279fae89e3210fbf7c48da1bbd4'
+    organize:
+      GCAP2020: gcap/
+  java:
+    plugin: dump
+    source: OpenJDK11U-jre_x64_linux_hotspot_11.0.14.1_1.tar.gz
+    source-checksum: 'sha1/36ea7324761aff38c0ef6d121568304390dda3a7'
+    organize:
+      '*': jdk11/
+
+apps:
+  gcap2020:
+    command: jdk11/bin/java -Xmx256m -jar $SNAP/gcap/GCAP.jar
+    environment:
+      JAVA_HOME: $SNAP/jdk11/
+      PATH: $JAVA_HOME/bin:$PATH
+    extensions: [gnome-3-38]
+    plugs:
+      - cups-control
+      - desktop
+      - desktop-legacy
+      - home
+      - network
+      - removable-media
+      - unity7
+      - wayland
+      - x11
