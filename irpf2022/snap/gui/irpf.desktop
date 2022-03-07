@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Office;
+Comment=Programa IRPF 2022 - Receita Federal
+Exec=irpf2022 %U
+GenericName=IRPF 2022
+Icon=${SNAP}/meta/gui/irpf.png
+Keywords=irpf;receita federal;imposto de renda;
+Name=IRPF 2022
+StartupNotify=true
+StartupWMClass=serpro-ppgd-app-IRPFPGD
+Terminal=false
+Type=Application
+Version=1.0
