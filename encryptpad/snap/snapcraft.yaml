@@ -68,3 +68,5 @@ apps:
       - unity7
       - wayland
       - x11
+    environment:
+      DISABLE_WAYLAND: 1
